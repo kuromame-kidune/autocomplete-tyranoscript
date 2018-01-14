@@ -1,0 +1,185 @@
+'scopeName': 'source.ks'
+'fileTypes': [
+  'ks'
+]
+'name': 'TyranoScript'
+'patterns': [
+  {
+    'begin': '^;'
+    'end': '$'
+    'name': 'comment.line.ks'
+  }
+  {
+    'begin': '^\\*'
+    'end': '$'
+    'name': 'support.function.ks, markup.bold.ks'
+  }
+  {
+    'begin': '(\\[/?)(([a-z]*_)*[a-z:-]+)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.tag.begin.ks'
+      '2':
+        'name': 'entity.name.tag.other.ks'
+    'end': '(\\])'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.tag.end.ks'
+    'name': 'meta.tag.other.ks'
+    'patterns': [
+      {
+        'include': '#tag-stuff'
+      }
+    ]
+  }
+  {
+    'begin': '#'
+    'end': '$'
+    'name': 'support.function.ks'
+  }
+  {
+    'include': '#character-reference'
+  }
+  {
+    'match': '\\[\\]'
+    'name': 'invalid.illegal.incomplete.ks'
+  }
+]
+'repository':
+  'character-reference':
+    'patterns': [
+      {
+        'begin': '(&)(#\\d+|#[xX][0-9a-fA-F]+)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.entity.begin.ks'
+          '2':
+            'name': 'entity.name.entity.other.ks'
+        'end': ';'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.entity.end.ks'
+        'name': 'constant.character.entity.ks'
+      }
+      {
+        'match': '(&)([a-zA-Z0-9]+)(;)'
+        'name': 'constant.character.entity.ks'
+        'captures':
+          '1':
+            'name': 'punctuation.definition.entity.begin.ks'
+          '2':
+            'name': 'entity.name.entity.other.ks'
+          '3':
+            'name': 'punctuation.definition.entity.end.ks'
+      }
+      {
+        'match': '&(?!\\s|\\[|&|[a-zA-Z0-9])'
+        'name': 'invalid.illegal.bad-ampersand.ks'
+      }
+    ]
+  'string-double-quoted':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ks'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ks'
+    'name': 'string.quoted.double.ks'
+    'patterns': [
+      {
+        'include': '#character-reference'
+      }
+    ]
+  'string-single-quoted':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ks'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ks'
+    'name': 'string.quoted.single.ks'
+    'patterns': [
+      {
+        'include': '#character-reference'
+      }
+    ]
+  'tag-generic-attribute':
+    'patterns': [
+      {
+        'begin': '([^\\s/=\\]"\'\\[]+)(=)'
+        'beginCaptures':
+          '1':
+            'name': 'entity.other.attribute-name.ks'
+          '2':
+            'name': 'punctuation.separator.key-value.ks'
+        'end': '(?!\\G)|(?=\\s|/?\\])'
+        'name': 'meta.attribute-with-value.ks'
+        'patterns': [
+          {
+            'include': '#string-double-quoted'
+          }
+          {
+            'include': '#string-single-quoted'
+          }
+          {
+            'include': '#unquoted-attribute'
+          }
+        ]
+      }
+      {
+        'match': '[^\\s/=\\]"\'\\[]+'
+        'captures':
+          '0':
+            'name': 'entity.other.attribute-name.ks'
+        'name': 'meta.attribute-without-value.ks'
+      }
+    ]
+  'tag-class-attribute':
+    'begin': '\\b(class)(=)'
+    'captures':
+      '1':
+        'name': 'entity.other.attribute-name.class.ks'
+      '2':
+        'name': 'punctuation.separator.key-value.ks'
+    'end': '(?!\\G)|(?=\\s|/?\\])'
+    'name': 'meta.attribute-with-value.class.ks'
+    'patterns': [
+      {
+        'include': '#string-double-quoted'
+      }
+      {
+        'include': '#string-single-quoted'
+      }
+      {
+        'include': '#unquoted-attribute'
+      }
+    ]
+  'tag-stuff':
+    'patterns': [
+      {
+        'include': '#tag-class-attribute'
+      }
+      {
+        'include': '#tag-generic-attribute'
+      }
+      {
+        'include': '#string-double-quoted'
+      }
+      {
+        'include': '#string-single-quoted'
+      }
+    ]
+  'unquoted-attribute':
+    'patterns': [
+      {
+        'include': '#character-reference'
+      }
+      {
+        'match': '([^\\s&\\]"\'\\[=`]|&(?=\\]))+'
+        'name': 'string.unquoted.ks'
+      }
+    ]

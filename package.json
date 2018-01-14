@@ -1,0 +1,18 @@
+{
+  "name": "autocomplete-tyranoscript",
+  "version": "0.0.0",
+  "description": "TyranoScript language support for Atom",
+  "main": "./lib/main",
+  "license": "MIT",
+  "repository": "https://github.com/kuromame-kidune/autocomplete-tyranoscript.git",
+  "engines": {
+    "atom": ">=1.23.3"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getProvider"
+      }
+    }
+  }
+}
