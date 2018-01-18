@@ -105,19 +105,15 @@ module.exports =
     values = @getAttributeValues(tag, attribute)
 
     for value in values when not prefix or firstCharsEqual(value, prefix)
-      completions.push(@buildAttributeValueCompletion(tag, attribute, value, @completions.attributes[tag+'/'+attribute]))
-
-    if completions.length is 0 and @completions.attributes[attribute]?.type is 'boolean'
-      completions.push(@buildAttributeValueCompletion(tag, attribute, 'true'))
-      completions.push(@buildAttributeValueCompletion(tag, attribute, 'false'))
+      completions.push(@buildAttributeValueCompletion(tag, attribute, value))
 
     completions
 
-  buildAttributeValueCompletion: (tag, attribute, value, options) ->
-    text: value
-    type: 'value'
-    description: options?.description ? "[#{tag}] パラメータ"
-    descriptionMoreURL: @getTagDocsURL(tag)
+  buildAttributeValueCompletion: (tag, attribute, value) ->
+        text: value
+        type: 'value'
+        description: options?.description ? "[#{tag}] パラメータ"
+        descriptionMoreURL: @getTagDocsURL(tag)
 
   getPreviousTag: (editor, bufferPosition) ->
     {row} = bufferPosition

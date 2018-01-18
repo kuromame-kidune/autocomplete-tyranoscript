@@ -1,0 +1,23 @@
+'scopeName': 'source.tjs'
+'fileTypes': [
+  'tjs'
+]
+'name': 'TyranoScript TJS'
+'patterns': [
+  {
+    'begin': '//'
+    'end': '$'
+    'name': 'comment.line.tjs'
+  }
+  {
+    'match': '(^;+(?i)[a-zA-Z]+)(\\.*)([a-zA-Z]*_*[a-zA-Z]*)'
+    'captures':
+      '1':
+        'name': 'entity.name.function.tjs'
+      '2':
+        'name': ''
+      '3':
+        'name': 'entity.name.type.tjs'
+
+  }
+]
