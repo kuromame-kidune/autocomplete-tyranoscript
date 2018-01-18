@@ -1,7 +1,7 @@
 COMPLETIONS = require '../completions.json'
 
 attributePattern = /\s+([a-z][-a-z]*)\s*=\s*$/
-tagPattern = /\[+(([a-z]*_)*[a-z:-]+)(?:\s|$)/
+tagPattern = /(?:\[|@)+(([a-z]+_*)*[a-z]+_*)(?:\s|$)/
 
 module.exports =
   selector: '.source.ks'
@@ -26,11 +26,10 @@ module.exports =
     atom.commands.dispatch(atom.views.getView(editor), 'autocomplete-plus:activate', activatedManually: false)
 
   isTagStart: ({prefix, scopeDescriptor, bufferPosition, editor}) ->
-    return @hasTagScope(scopeDescriptor.getScopesArray()) if prefix.trim() and prefix.indexOf('\[') is -1
-
+    return @hasTagScope(scopeDescriptor.getScopesArray()) if prefix.trim() and prefix.indexOf('\[') is -1 and prefix.indexOf('@') is -1
     prefix = editor.getTextInRange([[bufferPosition.row, bufferPosition.column - 1], bufferPosition])
     scopes = scopeDescriptor.getScopesArray()
-    prefix is '\[' and scopes[0] is 'source.ks' and scopes.length is 1
+    (prefix is '\[' or prefix is '@') and scopes[0] is 'source.ks' and scopes.length is 1
 
   isAttributeStart: ({prefix, scopeDescriptor, bufferPosition, editor}) ->
     scopes = scopeDescriptor.getScopesArray()
@@ -67,7 +66,8 @@ module.exports =
       scopes.indexOf('string.quoted.single.ks') isnt -1
 
   getTagNameCompletions: ({prefix, editor, bufferPosition}) ->
-    ignorePrefix = editor.getTextInRange([[bufferPosition.row, bufferPosition.column - 1], bufferPosition]) is '\['
+    tmpPrefix = editor.getTextInRange([[bufferPosition.row, bufferPosition.column - 1], bufferPosition])
+    ignorePrefix = tmpPrefix is '\[' or tmpPrefix is '@'
 
     completions = []
     for tag, options of @completions.tags when ignorePrefix or firstCharsEqual(tag, prefix)

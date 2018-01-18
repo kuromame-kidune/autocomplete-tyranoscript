@@ -75,13 +75,31 @@
     ]
   }
   {
-    'begin': '(\\[?)(([a-z]*_)*[a-z:-]+)'
+    'begin': '(\\[?)(([a-z]+_*)*[a-z]+_*)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.tag.begin.ks'
       '2':
         'name': 'entity.name.tag.other.ks'
     'end': '(\\])'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.tag.end.ks'
+    'name': 'meta.tag.other.ks'
+    'patterns': [
+      {
+        'include': '#tag-stuff'
+      }
+    ]
+  }
+  {
+    'begin': '(@?)(([a-z]+_*)*[a-z]+_*)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.tag.begin.ks'
+      '2':
+        'name': 'entity.name.tag.other.ks'
+    'end': '$'
     'endCaptures':
       '1':
         'name': 'punctuation.definition.tag.end.ks'
@@ -133,7 +151,7 @@
             'name': 'punctuation.definition.entity.end.ks'
       }
       {
-        'match': '&(?!\\s|\\[|&|[a-zA-Z0-9])'
+        'match': '&(?!\\s|\\[|@|&|[a-zA-Z0-9])'
         'name': 'invalid.illegal.bad-ampersand.ks'
       }
     ]
@@ -191,7 +209,7 @@
         ]
       }
       {
-        'match': '[^\\s/=\\]"\'\\[]+'
+        'match': '[^\\s/=>"\'<]+'
         'captures':
           '0':
             'name': 'entity.other.attribute-name.ks'
