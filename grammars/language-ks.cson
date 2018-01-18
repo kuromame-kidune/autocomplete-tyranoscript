@@ -15,7 +15,67 @@
     'name': 'support.function.ks, markup.bold.ks'
   }
   {
-    'begin': '(\\[/?)(([a-z]*_)*[a-z:-]+)'
+    'begin': '(?i)(?=\\[iscript(\\s+|\\]))'
+    'end': '(\\[)((?i)endscript)(])'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.tag.html'
+      '2':
+        'name': 'entity.name.tag.script.html'
+      '3':
+        'name': 'punctuation.definition.tag.html'
+    'name': 'meta.tag.script.html'
+    'patterns': [
+      {
+        'begin': '(?i)\\G(\\[)(iscript)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.tag.html'
+          '2':
+            'name': 'entity.name.tag.script.html'
+        'end': '\\]'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.tag.html'
+        'patterns': [
+          {
+            'include': '#tag-stuff'
+          }
+        ]
+      }
+      {
+        'begin': '(?!\\G)'
+        'end': '(?i)(?=\\[endscript\\])'
+        'name': 'source.js.embedded.html'
+        'patterns': [
+          {
+            'begin': '//'
+            'beginCaptures':
+              '0':
+                'name': 'punctuation.definition.comment.js'
+            'end': '(?=(?i)\\[endscript\\]|$)'
+            'name': 'comment.line.double-slash.js'
+          }
+          {
+            'begin': '/\\*'
+            'beginCaptures':
+              '0':
+                'name': 'punctuation.definition.comment.begin.js'
+            'end': '\\*/|(?=(?i)\\[endscript\\])'
+            'endCaptures':
+              '0':
+                'name': 'punctuation.definition.comment.begin.js'
+            'name': 'comment.block.js'
+          }
+          {
+            'include': 'source.js'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '(\\[?)(([a-z]*_)*[a-z:-]+)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.tag.begin.ks'
