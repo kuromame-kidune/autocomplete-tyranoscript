@@ -75,7 +75,7 @@
     ]
   }
   {
-    'begin': '(\\[?)(([a-z]+_*)*[a-z]+_*)'
+    'begin': '(\\[+)(([a-z]+_*)*[a-z]+_*)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.tag.begin.ks'
@@ -93,7 +93,7 @@
     ]
   }
   {
-    'begin': '(@?)(([a-z]+_*)*[a-z]+_*)'
+    'begin': '(@+)(([a-z]+_*)*[a-z]+_*)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.tag.begin.ks'
@@ -117,10 +117,6 @@
   }
   {
     'include': '#character-reference'
-  }
-  {
-    'match': '\\[\\]'
-    'name': 'invalid.illegal.incomplete.ks'
   }
 ]
 'repository':
