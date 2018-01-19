@@ -78,7 +78,7 @@ module.exports =
     text: tag
     type: 'tag'
     description: description ? "タグ"
-    descriptionMoreURL: if description then @getTagDocsURL(tag) else null
+    descriptionMoreURL: if tag.match(/^emote+/) then @getTagEmoteDocsURL(tag) else @getTagDocsURL(tag)
 
   getAttributeNameCompletions: ({prefix, editor, bufferPosition}) ->
     completions = []
@@ -96,7 +96,7 @@ module.exports =
     type: 'attribute'
     rightLabel: if attribute[1] is '*' then '*必須' else ''
     description: options?.description ? "[#{tag}] パラメータ"
-    descriptionMoreURL: @getTagDocsURL(tag)
+    descriptionMoreURL: if tag.match(/^emote+/) then @getTagEmoteDocsURL(tag) else @getTagDocsURL(tag)
 
   getAttributeValueCompletions: ({prefix, editor, bufferPosition}) ->
     completions = []
@@ -105,15 +105,15 @@ module.exports =
     values = @getAttributeValues(tag, attribute)
 
     for value in values when not prefix or firstCharsEqual(value, prefix)
-      completions.push(@buildAttributeValueCompletion(tag, attribute, value))
+      completions.push(@buildAttributeValueCompletion(tag, attribute, value, @completions.attributes[tag+'/'+attribute]))
 
     completions
 
-  buildAttributeValueCompletion: (tag, attribute, value) ->
-        text: value
-        type: 'value'
-        description: options?.description ? "[#{tag}] パラメータ"
-        descriptionMoreURL: @getTagDocsURL(tag)
+  buildAttributeValueCompletion: (tag, attribute, value, options) ->
+    text: value
+    type: 'value'
+    description: options?.description ? "[#{tag}] パラメータの値"
+    descriptionMoreURL: if tag.match(/^emote+/) then @getTagEmoteDocsURL(tag) else @getTagDocsURL(tag)
 
   getPreviousTag: (editor, bufferPosition) ->
     {row} = bufferPosition
@@ -141,6 +141,9 @@ module.exports =
 
   getTagDocsURL: (tag) ->
     "https://tyrano.jp/tag\##{tag}"
+
+  getTagEmoteDocsURL: (tag) ->
+    "https://tyrano.jp/sample/emote\##{tag}"
 
 firstCharsEqual = (str1, str2) ->
   str1[0].toLowerCase() is str2[0].toLowerCase()

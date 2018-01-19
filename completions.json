@@ -220,6 +220,38 @@
             "attributes": [["exp", "*"]],
             "description": "式評価結果の埋め込み"
         },
+        "emote_logo": {
+            "attributes": [["time", ""],["size", ""]],
+            "description": "E-moteロゴの表示"
+        },
+        "emote_restore": {
+            "attributes": [],
+            "description": "E-moteモデルを使用する場合にmake.ksに記述"
+        },
+        "emote_new": {
+            "attributes": [["name", ""],["storage", ""],["layer", ""],["page", ""],["scale", ""],["left", ""],["top", ""],["physics", ""],["motion", ""],["motion_1", ""],["motion_2", ""],["motion_3", ""],["motion_4", ""],["motion_5", ""],["motion_6", ""]],
+            "description": "E-moteモデルの作成"
+        },
+        "emote_show": {
+            "attributes": [["name", ""],["scale", ""],["left", ""],["top", ""],["time", ""]],
+            "description": "E-moteモデルの表示"
+        },
+        "emote_hide": {
+            "attributes": [["name", ""],["time", ""]],
+            "description": "E-moteモデルの非表示"
+        },
+        "emote_motion": {
+            "attributes": [["name", ""],["motion", ""],["slot", ""],["wait", ""]],
+            "description": "E-moteモデルのモーションを設定"
+        },
+        "emote_delete": {
+            "attributes": [["name", ""]],
+            "description": "E-moteモデルの削除"
+        },
+        "emote_trans": {
+            "attributes": [["name", ""],["time", ""],["scale", ""],["left", ""],["top", ""],["wait", ""]],
+            "description": "E-moteモデルの変形・変更"
+        },
         "er": {
             "attributes": [],
             "description": "メッセージレイヤに表示されている文字の消去"
@@ -2391,6 +2423,146 @@
         "web/url": {
             "attribOption": [],
             "description": "＜入力値＞URL\nWebサイトのURLを指定します。"
+        },
+        "emote_logo/time": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\n＜Default＞500\nロゴ表示画面に切り替わる時間を指定します。"
+        },
+        "emote_logo/size": {
+            "attribOption": ["small", "middle", "large"],
+            "description": "＜入力値＞small｜middle｜large\nロゴのサイズを指定します。"
+        },
+        "emote_new/name": {
+            "attribOption": [],
+            "description": "＜入力値＞モデル名\nモデルを指定します。"
+        },
+        "emote_new/storage": {
+            "attribOption": [],
+            "description": "＜入力値＞モデルデータ名\nロードするモデルデータ（emtbytes）を指定します。データは、other/emote/model フォルダに格納してください。"
+        },
+        "emote_new/layer": {
+            "attribOption": [],
+            "description": "＜入力値＞レイヤー名\n＜Default＞0\nレイヤを指定します。"
+        },
+        "emote_new/page": {
+            "attribOption": ["fore", "back"],
+            "description": "＜入力値＞fore｜back\n表画面・裏画面のどちらを操作対象とするかを指定します。省略すると fore が指定されます。"
+        },
+        "emote_new/scale": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n拡大、縮小する量を指定します。"
+        },
+        "emote_new/left": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n＜Default＞0\n横位置を指定します。画面中央が 0 となります。"
+        },
+        "emote_new/top": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n＜Default＞0\n縦位置を指定します。画面中央が 0 となります。"
+        },
+        "emote_new/physics": {
+            "attribOption": ["true", "false"],
+            "description": "＜入力値＞true｜false\n＜Default＞true\n物理演算を有効にするかを指定します。"
+        },
+        "emote_new/motion": {
+            "attribOption": [],
+            "description": "＜入力値＞モーション名\nメインモーションを指定します。"
+        },
+        "emote_new/motion_1": {
+            "attribOption": [],
+            "description": "＜入力値＞モーション名\n差分モーションを指定します。"
+        },
+        "emote_new/motion_2": {
+            "attribOption": [],
+            "description": "＜入力値＞モーション名\n差分モーションを指定します。"
+        },
+        "emote_new/motion_3": {
+            "attribOption": [],
+            "description": "＜入力値＞モーション名\n差分モーションを指定します。"
+        },
+        "emote_new/motion_4": {
+            "attribOption": [],
+            "description": "＜入力値＞モーション名\n差分モーションを指定します。"
+        },
+        "emote_new/motion_5": {
+            "attribOption": [],
+            "description": "＜入力値＞モーション名\n差分モーションを指定します。"
+        },
+        "emote_new/motion_6": {
+            "attribOption": [],
+            "description": "＜入力値＞モーション名\n差分モーションを指定します。"
+        },
+        "emote_show/name": {
+            "attribOption": [],
+            "description": "＜入力値＞モデル名\nモデルを指定します。"
+        },
+        "emote_show/scale": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n拡大、縮小する量を指定します。"
+        },
+        "emote_show/left": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n＜Default＞0\n横位置を指定します。画面中央が 0 となります。"
+        },
+        "emote_show/top": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n＜Default＞0\n縦位置を指定します。画面中央が 0 となります。"
+        },
+        "emote_show/time": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\n＜Default＞1000\nフェードインを行う時間を指定します。"
+        },
+        "emote_hide/name": {
+            "attribOption": [],
+            "description": "＜入力値＞モデル名\nモデルを指定します。"
+        },
+        "emote_hide/time": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\n＜Default＞100\nモデルのフェードアウトを行う時間を指定します。"
+        },
+        "emote_motion/name": {
+            "attribOption": [],
+            "description": "＜入力値＞モデル名\nモデルを指定します。"
+        },
+        "emote_motion/motion": {
+            "attribOption": [],
+            "description": "＜入力値＞モーション名\n再生するモーションを指定します。"
+        },
+        "emote_motion/slot": {
+            "attribOption": [],
+            "description": "＜入力値＞1～6\n＜Default＞main\n差分モーションを設定する場合にスロットを指定します。"
+        },
+        "emote_motion/wait": {
+            "attribOption": ["true", "false"],
+            "description": "＜入力値＞true｜false\n＜Default＞false\nモーションの再生が完了するまでゲームの進行を止めるかを指定します。"
+        },
+        "emote_delete/name": {
+            "attribOption": [],
+            "description": "＜入力値＞モデル名\nモデルを指定します。"
+        },
+        "emote_trans/name": {
+            "attribOption": [],
+            "description": "＜入力値＞モデル名\nモデルを指定します。"
+        },
+        "emote_trans/time": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\n＜Default＞1000\nアニメーションにかける時間を指定します。"
+        },
+        "emote_trans/scale": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n拡大、縮小する量を指定します。"
+        },
+        "emote_trans/left": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n＜Default＞0\n横位置を指定します。画面中央が 0 になります。"
+        },
+        "emote_trans/top": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n＜Default＞0\n縦位置を指定します。画面中央が 0 になります。"
+        },
+        "emote_trans/wait": {
+            "attribOption": ["true", "false"],
+            "description": "＜入力値＞true｜false\n＜Default＞true\nアニメーションが完了するまでゲームの進行を止めるかを指定します。"
         }
     }
 }
