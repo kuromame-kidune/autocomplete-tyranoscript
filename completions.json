@@ -84,6 +84,10 @@
             "attributes": [["wait", ""],["time", ""],["layer", ""]],
             "description": "キャラクターの全員退場"
         },
+        "chara_layer": {
+            "attributes": [["name", "*"],["part", "*"],["id", "*"],["storage", "*"],["zindex", "*"]],
+            "description": "キャラクターの差分パーツ定義"
+        },
         "chara_mod": {
             "attributes": [["name", "*"],["face", ""],["time", ""],["reflect", ""],["storage", ""],["wait", ""],["cross", ""]],
             "description": "キャラクター画像の変更"
@@ -96,6 +100,14 @@
             "attributes": [["name", "*"],["storage", "*"],["width", ""],["height", ""],["reflect", ""],["color", ""],["jname", ""]],
             "description": "キャラクター情報の定義"
         },
+        "chara_part": {
+            "attributes": [["name", "*"],["allow_storage", ""]],
+            "description": "キャラクターの差分パーツ変更"
+        },
+        "chara_part_reset": {
+            "attributes": [["name", "*"],["part", ""]],
+            "description": "キャラクターの差分パーツをデフォルトに戻す"
+        },
         "chara_ptext": {
             "attributes": [["name", ""],["face", ""]],
             "description": "キャラクターの発言名前欄表示と表情の変更"
@@ -103,6 +115,22 @@
         "chara_show": {
             "attributes": [["name", "*"],["time", ""],["layer", ""],["zindex", ""],["page", ""],["wait", ""],["face", ""],["reflect", ""],["width", ""],["height", ""],["left", ""],["top", ""]],
             "description": "キャラクターの登場"
+        },
+        "chat_talk": {
+            "attributes": [["name", ""],["layer", ""],["page", ""],["id", ""],["face", ""],["time", ""],["text", ""],["pos", ""],["bgcolor", ""],["graphic", ""],["graphic_width", ""],["graphic_height", ""],["folder", ""],["width", ""],["bottom", ""],["se", ""],["delay", ""],["reflect", ""]],
+            "description": "チャットの表示"
+        },
+        "chat_config": {
+            "attributes": [["layer", ""],["width", ""],["height", ""],["top", ""],["backlog", ""],["overflow", ""],["left", ""],["face_width", ""],["margin_face", ""],["left_bgcolor", ""],["right_bgcolor", ""],["center_bgcolor", ""],["name_font_size", ""],["name_font_color", ""],["under_height", ""],["margin_top", ""],["zindex", ""],["anim_time", ""],["se", ""]],
+            "description": "チャットの基本設定"
+        },
+        "chat_clear": {
+            "attributes": [["time", ""]],
+            "description": "チャットのクリア"
+        },
+        "chat_scroll": {
+            "attributes": [["time", ""],["direction", ""],["effect", ""],["top", ""]],
+            "description": "チャットの表示"
         },
         "clearfix": {
             "attributes": [["name", ""]],
@@ -669,7 +697,7 @@
         },
         "playse/storage": {
             "attribOption": [],
-            "description": "＜入力値＞再生する効果音ファイル名\n再生する効果音ファイルを指定します。ファイルは、data/sound フォルダに格納してください。"
+            "description": "＜入力値＞効果音ファイル名\n再生する効果音ファイルを指定します。ファイルは、data/sound フォルダに格納してください。"
         },
         "playse/buf": {
             "attribOption": [],
@@ -697,7 +725,7 @@
         },
         "fadeinse/storage": {
             "attribOption": [],
-            "description": "＜入力値＞再生する効果音ファイル名\n再生する効果音ファイルを指定します。ファイルは、data/sound フォルダに格納してください。"
+            "description": "＜入力値＞効果音ファイル名\n再生する効果音ファイルを指定します。ファイルは、data/sound フォルダに格納してください。"
         },
         "fadeinse/loop": {
             "attribOption": ["true", "false"],
@@ -845,7 +873,7 @@
         },
         "image/storage": {
             "attribOption": [],
-            "description": "＜入力値＞画像ファイル名\n表示する画像ファイルを指定します。背景レイヤなら bgimage フォルダ、前景レイヤなら fgimage フォルダに格納してください。"
+            "description": "＜入力値＞画像ファイル名\n表示する画像ファイルを指定します。背景レイヤなら data/bgimage フォルダ、前景レイヤなら data/fgimage フォルダに格納してください。"
         },
         "image/layer": {
             "attribOption": ["base"],
@@ -885,7 +913,7 @@
         },
         "image/folder": {
             "attribOption": [],
-            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは fgimage フォルダ、背景レイヤは bgimage フォルダが指定されます。"
+            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは data/fgimage フォルダ、背景レイヤは data/bgimage フォルダが指定されます。"
         },
         "image/name": {
             "attribOption": [],
@@ -1306,7 +1334,7 @@
         },
         "button/folder": {
             "attribOption": [],
-            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは fgimage フォルダ、背景レイヤは bgimage フォルダが指定されます。"
+            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは data/fgimage フォルダ、背景レイヤは data/bgimage フォルダが指定されます。"
         },
         "button/exp": {
             "attribOption": [],
@@ -1534,7 +1562,7 @@
         },
         "layermode/folder": {
             "attribOption": [],
-            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは fgimage フォルダ、背景レイヤは bgimage フォルダが指定されます。"
+            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは data/fgimage フォルダ、背景レイヤは data/bgimage フォルダが指定されます。"
         },
         "layermode/opacity": {
             "attribOption": [],
@@ -1678,7 +1706,7 @@
         },
         "mask/folder": {
             "attribOption": [],
-            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは fgimage フォルダ、背景レイヤは bgimage フォルダが指定されます。"
+            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは data/fgimage フォルダ、背景レイヤは data/bgimage フォルダが指定されます。"
         },
         "mask_off/time": {
             "attribOption": [],
@@ -1902,7 +1930,7 @@
         },
         "save_img/folder": {
             "attribOption": [],
-            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは fgimage フォルダ、背景レイヤは bgimage フォルダが指定されます。"
+            "description": "＜入力値＞フォルダパス\n画像フォルダを指定します。省略すると前景レイヤは data/fgimage フォルダ、背景レイヤは data/bgimage フォルダが指定されます。"
         },
         "pushlog/text": {
             "attribOption": [],
@@ -2120,6 +2148,22 @@
             "attribOption": [],
             "description": "＜入力値＞レイヤ名\nレイヤを指定します。"
         },
+        "chara_part/name": {
+            "attribOption": [],
+            "description": "＜入力値＞chara_new タグで定義した name パラメータの値\nオブジェクトの名前を指定します。"
+        },
+        "chara_part/allow_storage": {
+            "attribOption": [],
+            "description": "＜入力値＞true｜false\n直接画像ファイルを設定するかを指定します。ファイルは、fgimage フォルダに格納してください。"
+        },
+        "chara_part_reset/name": {
+            "attribOption": [],
+            "description": "＜入力値＞chara_new タグで定義した name パラメータの値\nオブジェクトの名前を指定します。"
+        },
+        "chara_part_reset/part": {
+            "attribOption": [],
+            "description": "＜入力値＞true｜false\nデフォルトに戻す part パラメータを指定します。"
+        },
         "chara_ptext/name": {
             "attribOption": [],
             "description": "＜入力値＞chara_new タグで定義した name パラメータの値\nオブジェクトの名前を指定します。"
@@ -2256,6 +2300,178 @@
             "attribOption": [],
             "description": "＜入力値＞数字（ピクセル）\n上端位置を指定します。"
         },
+        "chat_talk/name": {
+            "attribOption": [],
+            "description": "＜入力値＞テキスト\nチャットを話してる人の下に表示される名前を指定します。"
+        },
+        "chat_talk/layer": {
+            "attribOption": [],
+            "description": "＜入力値＞レイヤ名\nチャットを表示するレイヤを指定"
+        },
+        "chat_talk/page": {
+            "attribOption": ["fore", "back"],
+            "description": "＜入力値＞fore｜back\n表画面・裏画面のどちらを操作対象とするかを指定します。省略すると fore が指定されます。"
+        },
+        "chat_talk/id": {
+            "attribOption": [],
+            "description": "＜入力値＞半角英数字\nJavaScriptで使用するクラス名を指定します。"
+        },
+        "chat_talk/face": {
+            "attribOption": [],
+            "description": "＜入力値＞画像ファイル名\n吹き出しの表情アイコンを指定します。ファイルは data/fgimage フォルダに格納してください。"
+        },
+        "chat_talk/time": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\n＜Default＞300\n吹き出しのフェードインにかかる時間を指定します。"
+        },
+        "chat_talk/text": {
+            "attribOption": [],
+            "description": "＜入力値＞テキスト\n吹き出しの中のテキストを指定します。"
+        },
+        "chat_talk/pos": {
+            "attribOption": ["left", "right", "center"],
+            "description": "＜入力値＞left｜right｜center\n＜Default＞left\nチャットの表示位置を指定します。"
+        },
+        "chat_talk/bgcolor": {
+            "attribOption": [],
+            "description": "＜入力値＞0xRRGGBB\n吹き出しの背景色を指定します。"
+        },
+        "chat_talk/graphic": {
+            "attribOption": [],
+            "description": "＜入力値＞画像ファイル名\n吹き出しの中に画像を指定します。ファイルは data/fgimage フォルダに格納してください。"
+        },
+        "chat_talk/graphic_width": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\ngraphic パラメータで指定した画像の幅を指定します。"
+        },
+        "chat_talk/graphic_height": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\ngraphic パラメータで指定した画像の高さを指定します。"
+        },
+        "chat_talk/folder": {
+            "attribOption": [],
+            "description": "＜入力値＞フォルダパス\ngraphic パラメータで指定する画像ファイルのフォルダを指定します。"
+        },
+        "chat_talk/width": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\n吹き出しの幅を指定します。"
+        },
+        "chat_talk/bottom": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\n吹き出しテキストの下に挿入するスペースの高さを指定します。"
+        },
+        "chat_talk/se": {
+            "attribOption": [],
+            "description": "＜入力値＞効果音ファイル名\n吹き出しが表示された時に再生する効果音ファイルを指定します。ファイルは、data/sound フォルダに格納してください。"
+        },
+        "chat_talk/delay": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\n吹き出しのテキストの表示を遅らせる時間を指定します。"
+        },
+        "chat_talk/reflect": {
+            "attribOption": ["true", "false"],
+            "description": "＜入力値＞true｜false\n表情画像を反転するかを指定します。"
+        },
+        "chat_config/layer": {
+            "attribOption": [],
+            "description": "＜入力値＞レイヤ名\n＜Default＞0\nチャットを表示するデフォルトレイヤを指定します。"
+        },
+        "chat_config/width": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\nチャットを表示するエリアの幅を指定します。"
+        },
+        "chat_config/height": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\nチャットを表示するエリアの高さを指定します。"
+        },
+        "chat_config/top": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\nチャットエリアの縦位置を指定します。"
+        },
+        "chat_config/backlog": {
+            "attribOption": ["true", "false"],
+            "description": "＜入力値＞true｜false\nチャットテキストをバックログに追加するかを指定します。"
+        },
+        "chat_config/overflow": {
+            "attribOption": ["hidden", "remove"],
+            "description": "＜入力値＞hidden｜remove\nログを消去するかを指定します。"
+        },
+        "chat_config/left": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\nチャットエリアの横位置を指定します。"
+        },
+        "chat_config/face_width": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\n＜Default＞100\n表情部分のイメージの幅を指定します。"
+        },
+        "chat_config/margin_face": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\n＜Default＞20\n表情部分の画面端のスペースを指定します。"
+        },
+        "chat_config/left_bgcolor": {
+            "attribOption": [],
+            "description": "＜入力値＞0xRRGGBB\n左に表示するチャットのデフォルトの背景色を指定します。"
+        },
+        "chat_config/center_bgcolor": {
+            "attribOption": [],
+            "description": "＜入力値＞0xRRGGBB\n中央に表示するチャットのデフォルトの背景色を指定します。"
+        },
+        "chat_config/right_bgcolor": {
+            "attribOption": [],
+            "description": "＜入力値＞0xRRGGBB\n右に表示するチャットのデフォルトの背景色を指定します。"
+        },
+        "chat_config/name_font_size": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\n名前部分のフォントサイズを指定します。"
+        },
+        "chat_config/name_font_color": {
+            "attribOption": [],
+            "description": "＜入力値＞0xRRGGBB\n名前部分のフォント色を指定します。"
+        },
+        "chat_config/under_height": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\n吹き出しが表示される高さを指定します。"
+        },
+        "chat_config/margin_top": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\n＜Default＞25\n吹き出しの上部のスペースを指定します。"
+        },
+        "chat_config/": {
+            "attribOption": [],
+            "description": "＜入力値＞\n"
+        },
+        "chat_config/zindex": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n画像同士の重なりを指定します。数値が大きい方が前に表示されます。"
+        },
+        "chat_config/anim_time": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\nアニメーションにかける時間を指定します。"
+        },
+        "chat_config/se": {
+            "attribOption": [],
+            "description": "＜入力値＞効果音ファイル名\n吹き出しが表示された時に再生する効果音ファイルを指定します。ファイルは、data/sound フォルダに格納してください。"
+        },
+        "chat_clear/time": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\n＜Default＞200\nフェードアウトにかける時間を指定します。"
+        },
+        "chat_clear/time": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ミリ秒）\nスクロールにかける時間を指定します。"
+        },
+        "chat_clear/direction": {
+            "attribOption": ["up", "down"],
+            "description": "＜入力値＞up｜down\n巻き戻る方向を指定します。"
+        },
+        "chat_clear/effect": {
+            "attribOption": ["jswing", "def", "easeInQuad", "easeOutQuad", "easeInOutQuad", "easeInCubic", "easeOutCubic", "easeInOutCubic", "easeInQuart", "easeOutQuart", "easeInOutQuart", "easeInQuint", "easeOutQuint", "easeInOutQuint", "easeInSine", "easeOutSine", "easeInOutSine", "easeInExpo", "easeOutExpo", "easeInOutExpo", "easeInCirc", "easeOutCirc", "easeInOutCirc", "easeInElastic", "easeOutElastic", "easeInOutElastic", "easeInBack", "easeOutBack", "easeInOutBack", "easeInBounce", "easeOutBounce", "easeInOutBounce"],
+            "description": "＜入力値＞数字（ミリ秒）\n＜Default＞200\nフェードアウトにかける時間を指定します。"
+        },
+        "chat_clear/top": {
+            "attribOption": [],
+            "description": "＜入力値＞数字（ピクセル）\nスクロールする幅を指定します。"
+        },
         "chara_hide/name": {
             "attribOption": [],
             "description": "＜入力値＞chara_new タグの name パラメータの値\n非表示にするキャラクターの name パラメータを指定します。"
@@ -2292,13 +2508,35 @@
             "attribOption": [],
             "description": "＜入力値＞chara_new タグの name パラメータの値\n削除するキャラクターの name パラメータを指定します。"
         },
+
+        "chara_layer/name": {
+            "attribOption": [],
+            "description": "＜入力値＞chara_new タグの name パラメータの値\n登録するキャラクターの name パラメータを指定します。"
+        },
+        "chara_layer/part": {
+            "attribOption": [],
+            "description": "＜入力値＞テキスト\nパーツを登録するグループ名を指定します。"
+        },
+        "chara_layer/id": {
+            "attribOption": [],
+            "description": "＜入力値＞テキスト\nパーツの名前を指定します。"
+        },
+        "chara_layer/storage": {
+            "attribOption": [],
+            "description": "＜入力値＞画像ファイル名\n登録する画像ファイルを指定します。"
+        },
+        "chara_layer/zindex": {
+            "attribOption": [],
+            "description": "＜入力値＞数字\n画像同士の重なりを指定します。数値が大きい方が前に表示されます。"
+        },
+
         "chara_mod/name": {
             "attribOption": [],
-            "description": "＜入力値＞chara_new タグの name パラメータの値\n変更するキャタクターの name パラメータを指定します。"
+            "description": "＜入力値＞chara_new タグの name パラメータの値\n変更するキャラクターの name パラメータを指定します。"
         },
         "chara_mod/face": {
             "attribOption": [],
-            "description": "＜入力値＞chara_face タグの face パラメータの値\n変更するキャタクターの name パラメータを指定します。"
+            "description": "＜入力値＞chara_face タグの face パラメータの値\n変更するキャラクターの name パラメータを指定します。"
         },
         "chara_mod/time": {
             "attribOption": [],
@@ -2310,7 +2548,7 @@
         },
         "chara_mod/storage": {
             "attribOption": [],
-            "description": "＜入力値＞画像ファイル名\n変更する画像ファイルを指定します。ファイルは fgimage フォルダに格納してください。"
+            "description": "＜入力値＞画像ファイル名\n変更する画像ファイルを指定します。ファイルは data/fgimage フォルダに格納してください。"
         },
         "chara_mod/wait": {
             "attribOption": ["true", "false"],
@@ -2322,7 +2560,7 @@
         },
         "chara_move/name": {
             "attribOption": [],
-            "description": "＜入力値＞chara_new タグの name パラメータの値\n移動するキャタクターの name パラメータを指定します。"
+            "description": "＜入力値＞chara_new タグの name パラメータの値\n移動するキャラクターの name パラメータを指定します。"
         },
         "chara_move/time": {
             "attribOption": [],

@@ -75,10 +75,16 @@ module.exports =
     completions
 
   buildTagCompletion: (tag, {description}) ->
+    if tag.match(/^emote+/)
+        url = @getTagEmoteDocsURL(tag)
+    else if tag.match(/^chat+/)
+        url = @getTagChatDocsURL(tag)
+    else
+        url = @getTagDocsURL(tag)
     text: tag
     type: 'tag'
     description: description ? "タグ"
-    descriptionMoreURL: if tag.match(/^emote+/) then @getTagEmoteDocsURL(tag) else @getTagDocsURL(tag)
+    descriptionMoreURL: url
 
   getAttributeNameCompletions: ({prefix, editor, bufferPosition}) ->
     completions = []
@@ -91,12 +97,18 @@ module.exports =
     completions
 
   buildAttributeCompletion: (attribute, tag, options) ->
+    if tag.match(/^emote+/)
+        url = @getTagEmoteDocsURL(tag)
+    else if tag.match(/^chat+/)
+        url = @getTagChatDocsURL(tag)
+    else
+        url = @getTagDocsURL(tag)
     snippet: if options?.type is 'flag' then attribute[0] else "#{attribute[0]}=\"$1\"$0"
     displayText: attribute[0]
     type: 'attribute'
     rightLabel: if attribute[1] is '*' then '*必須' else ''
     description: options?.description ? "[#{tag}] パラメータ"
-    descriptionMoreURL: if tag.match(/^emote+/) then @getTagEmoteDocsURL(tag) else @getTagDocsURL(tag)
+    descriptionMoreURL: url
 
   getAttributeValueCompletions: ({prefix, editor, bufferPosition}) ->
     completions = []
@@ -110,11 +122,17 @@ module.exports =
     completions
 
   buildAttributeValueCompletion: (tag, attribute, value, options) ->
+    if tag.match(/^emote+/)
+        url = @getTagEmoteDocsURL(tag)
+    else if tag.match(/^chat+/)
+        url = @getTagChatDocsURL(tag)
+    else
+        url = @getTagDocsURL(tag)
     text: value
     type: 'value'
     description: options?.description ? "[#{tag}] パラメータの値"
-    descriptionMoreURL: if tag.match(/^emote+/) then @getTagEmoteDocsURL(tag) else @getTagDocsURL(tag)
-
+    descriptionMoreURL: url
+    
   getPreviousTag: (editor, bufferPosition) ->
     {row} = bufferPosition
     while row >= 0
@@ -144,6 +162,9 @@ module.exports =
 
   getTagEmoteDocsURL: (tag) ->
     "https://tyrano.jp/sample/emote\##{tag}"
+
+  getTagChatDocsURL: (tag) ->
+    "https://tyrano.jp/story/tag\##{tag}"
 
 firstCharsEqual = (str1, str2) ->
   str1[0].toLowerCase() is str2[0].toLowerCase()
