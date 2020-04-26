@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-tyranoscript",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "TyranoScript language support for Atom",
   "main": "./lib/main",
   "license": "MIT",
