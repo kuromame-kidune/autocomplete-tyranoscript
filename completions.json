@@ -1547,7 +1547,7 @@
             "description":"＜入力値＞true｜false\n＜Default＞false\n音声入力も反映するかを指定します"
         },
         "qr_config/qrcode":{
-            "attribOption":[],
+            "attribOption":["jump","web","define","all","off"],
             "description":"＜入力値＞jump｜web｜define｜all｜off\n＜Default＞off\nQRコード読込時の動作を指定します"
         },
         "stop_bgcamera/time":{
@@ -1788,7 +1788,7 @@
         },
         "mask/effect":{
             "attribOption":["fadeIn","fadeInDownBig","fadeInLeftBig","fadeInRightBig","fadeInUpBig","flipInX","flipInY","lightSpeedIn","rotateIn","rotateInDownLeft","rotateInDownRight","rotateInUpLeft","rotateInUpRight","zoomIn","zoomInDown","zoomInLeft","zoomInRight","zoomInUp","slideInDown","slideInLeft","slideInRight","slideInUp","bounceIn","bounceInDown","bounceInLeft","bounceInRight","bounceInUp","rollIn"],
-            "description":"＜入力値＞fadeIn｜fadeInDownBig｜fadeInLeftBig｜fadeInRightBig｜fadeInUpBig｜flipInX｜flipInY｜lightSpeedIn｜rotateIn｜rotateInDownLeft｜rotateInDownRight｜rotateInUpLeft｜rotateInUpRight｜zoomIn｜zoomInDown｜zoomInLeft｜zoomInRight｜zoomInUp｜slideInDown｜slideInLeft｜slideInRight｜slideInUp｜bounceIn｜bounceInDown｜bounceInLeft｜bounceInRight｜bounceInUp｜rollIn\n＜Default＞fadeIn\n暗転の効果を指定します"
+            "description":"＜入力値＞エフェクト名\n＜Default＞fadeIn\n暗転の効果を指定します"
         },
         "mask/color":{
             "attribOption":[],
@@ -1808,7 +1808,7 @@
         },
         "mask_off/effect":{
             "attribOption":["fadeIn","fadeInDownBig","fadeInLeftBig","fadeInRightBig","fadeInUpBig","flipInX","flipInY","lightSpeedIn","rotateIn","rotateInDownLeft","rotateInDownRight","rotateInUpLeft","rotateInUpRight","zoomIn","zoomInDown","zoomInLeft","zoomInRight","zoomInUp","slideInDown","slideInLeft","slideInRight","slideInUp","bounceIn","bounceInDown","bounceInLeft","bounceInRight","bounceInUp","rollIn"],
-            "description":"＜入力値＞fadeIn｜fadeInDownBig｜fadeInLeftBig｜fadeInRightBig｜fadeInUpBig｜flipInX｜flipInY｜lightSpeedIn｜rotateIn｜rotateInDownLeft｜rotateInDownRight｜rotateInUpLeft｜rotateInUpRight｜zoomIn｜zoomInDown｜zoomInLeft｜zoomInRight｜zoomInUp｜slideInDown｜slideInLeft｜slideInRight｜slideInUp｜bounceIn｜bounceInDown｜bounceInLeft｜bounceInRight｜bounceInUp｜rollIn\n＜Default＞fadeIn\n暗転の効果を指定します"
+            "description":"＜入力値＞エフェクト名\n＜Default＞fadeIn\n暗転の効果を指定します"
         },
         "loadjs/storage":{
             "attribOption":[],
@@ -1903,8 +1903,8 @@
             "description":"＜入力値＞数値(ミリ秒)\n処理にかける時間を指定します"
         },
         "anim/effect":{
-            "attribOption":[],
-            "description":"＜入力値＞テキスト\nエフェクトを指定します"
+            "attribOption":["jswing","def","easeInQuad","easeOutQuad","easeInOutQuad","easeInCubic","easeOutCubic","aseInOutCubic","easeInQuart","easeOutQuart","easeInOutQuart","easeInQuint","easeOutQuint","easeInOutQuint","easeInSine","easeOutSine","easeInOutSine","easeInExpo","easeOutExpo","easeInOutExpo","easeInCirc","easeOutCirc","easeInOutCirc","easeInElastic","aseOutElastic","easeInOutElastic","easeInBack","easeOutBack","easeInOutBack","easeInBounce","easeOutBounce","easeInOutBounce"],
+            "description":"＜入力値＞エフェクト名\nエフェクトを指定します"
         },
         "stopanim/name":{
             "attribOption":[],
@@ -2084,7 +2084,7 @@
         },
         "chara_config/effect":{
             "attribOption":["jswing","def","easeInQuad","easeOutQuad","easeInOutQuad","easeInCubic","easeOutCubic","aseInOutCubic","easeInQuart","easeOutQuart","easeInOutQuart","easeInQuint","easeOutQuint","easeInOutQuint","easeInSine","easeOutSine","easeInOutSine","easeInExpo","easeOutExpo","easeInOutExpo","easeInCirc","easeOutCirc","easeInOutCirc","easeInElastic","aseOutElastic","easeInOutElastic","easeInBack","easeOutBack","easeInOutBack","easeInBounce","easeOutBounce","easeInOutBounce"],
-            "description":"＜入力値＞jswing｜def｜easeInQuad｜easeOutQuad｜easeInOutQuad｜easeInCubic｜easeOutCubic｜aseInOutCubic｜easeInQuart｜easeOutQuart｜easeInOutQuart｜easeInQuint｜easeOutQuint｜easeInOutQuint｜easeInSine｜easeOutSine｜easeInOutSine｜easeInExpo｜easeOutExpo｜easeInOutExpo｜easeInCirc｜easeOutCirc｜easeInOutCirc｜easeInElastic｜aseOutElastic｜easeInOutElastic｜easeInBack｜easeOutBack｜easeInOutBack｜easeInBounce｜easeOutBounce｜easeInOutBounce\nキャラクターが位置を入れ替わる際の演出を指定します"
+            "description":"＜入力値＞エフェクト名\nキャラクターが位置を入れ替わる際の演出を指定します"
         },
         "chara_new/name":{
             "attribOption":[],
@@ -2268,7 +2268,7 @@
         },
         "chara_move/effect":{
             "attribOption":["jswing","def","easeInQuad","easeOutQuad","easeInOutQuad","easeInCubic","easeOutCubic","aseInOutCubic","easeInQuart","easeOutQuart","easeInOutQuart","easeInQuint","easeOutQuint","easeInOutQuint","easeInSine","easeOutSine","easeInOutSine","easeInExpo","easeOutExpo","easeInOutExpo","easeInCirc","easeOutCirc","easeInOutCirc","easeInElastic","aseOutElastic","easeInOutElastic","easeInBack","easeOutBack","easeInOutBack","easeInBounce","easeOutBounce","easeInOutBounce"],
-            "description":"＜入力値＞jswing｜def｜easeInQuad｜easeOutQuad｜easeInOutQuad｜easeInCubic｜easeOutCubic｜aseInOutCubic｜easeInQuart｜easeOutQuart｜easeInOutQuart｜easeInQuint｜easeOutQuint｜easeInOutQuint｜easeInSine｜easeOutSine｜easeInOutSine｜easeInExpo｜easeOutExpo｜easeInOutExpo｜easeInCirc｜easeOutCirc｜easeInOutCirc｜easeInElastic｜aseOutElastic｜easeInOutElastic｜easeInBack｜easeOutBack｜easeInOutBack｜easeInBounce｜easeOutBounce｜easeInOutBounce\n変化のエフェクトを指定します"
+            "description":"＜入力値＞エフェクト名\n変化のエフェクトを指定します"
         },
         "chara_face/name":{
             "attribOption":[],
