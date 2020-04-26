@@ -449,9 +449,9 @@
             "description":"バックログを表示します"
         },
         "filter": {
-            "attributes":[["layer",""],["name",""]],
-            "description":"フィルター効果演出"
-        },
+			"attributes":[["layer",""],["name",""],["grayscale",""],["sepia",""],["saturate",""],["hue",""],["invert",""],["opacity",""],["brightness",""],["contrast",""],["blur",""]],
+			"description":"フィルター効果演出"
+		},
         "free_filter": {
             "attributes":[["layer",""],["name",""]],
             "description":"フィルター効果削除"
@@ -2339,13 +2339,49 @@
             "description":"＜入力値＞テキスト\nパーツ名を指定します"
         },
         "filter/layer":{
-            "attribOption":[],
-            "description":"＜入力値＞レイヤ名\n対象のレイヤを指定します"
-        },
-        "filter/name":{
-            "attribOption":[],
-            "description":"＜入力値＞テキスト\n削除するオブジェクトのnameを指定します"
-        },
+			"attribOption":[],
+			"description":"＜入力値＞レイヤ名\n対象のレイヤを指定します"
+		},
+		"filter/name":{
+			"attribOption":[],
+			"description":"＜入力値＞テキスト\n対象のオブジェクトを指定します"
+		},
+		"filter/grayscale":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞0\nグレースケール値を指定します"
+		},
+		"filter/sepia":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞0\nセピア値を指定します"
+		},
+		"filter/saturate":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞100\n彩度（色の鮮やかさ）を指定します"
+		},
+		"filter/hue":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞0\n色相を指定します"
+		},
+		"filter/invert":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞0\n階調の反転を指定します"
+		},
+		"filter/opacity":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞0\n不透明度を指定します"
+		},
+		"filter/brightness":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞0\n明るさを指定します"
+		},
+		"filter/contrast":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞0\nコントラストを指定します"
+		},
+		"filter/blur":{
+			"attribOption":[],
+			"description":"＜入力値＞数値\n＜Default＞0\nぼかしを指定します"
+		},
         "free_filter/layer":{
             "attribOption":[],
             "description":"＜入力値＞レイヤ名\n対象のレイヤを指定します"
