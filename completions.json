@@ -65,9 +65,9 @@
             "description":"レイヤにテキストを追加"
         },
         "mtext": {
-            "attributes":[["layer",""],["page",""],["text",""],["x","*"],["y","*"],["vertical",""],["size",""],["face",""],["color",""]],
-            "description":"演出テキスト"
-        },
+			"attributes":[["layer",""],["page",""],["text",""],["x","*"],["y","*"],["vertical",""],["size",""],["face",""],["color",""],["width",""],["align",""],["name",""],["bold",""],["edge",""],["shadow",""],["fadeout",""],["time",""],["wait",""],["in_effect",""],["in_delay",""],["in_delay_scale",""],["in_sync",""],["in_shuffle",""],["in_reverse",""],["out_effect",""],["out_delay",""],["out_delay_scale",""],["out_sync",""],["out_shuffle",""],["out_reverse",""]],
+			"description":"演出テキスト"
+		},
         "backlay": {
             "attributes":[["layer",""]],
             "description":"レイヤ情報の表ページから裏ページへのコピー"
@@ -965,6 +965,90 @@
         "mtext/color":{
             "attribOption":[],
             "description":"＜入力値＞0xRRGGBB形式\nフォントの色を指定します"
+        },
+        "mtext/width":{
+            "attribOption":[],
+            "description":"＜入力値＞数値（px）\n幅を指定します"
+        },
+        "mtext/align":{
+            "attribOption":["left","center","right"],
+            "description":"＜入力値＞left｜center｜right\n＜Default＞left\n文字の横方向に関する位置を指定します"
+        },
+        "mtext/name":{
+            "attribOption":[],
+            "description":"＜入力値＞テキスト\nオブジェクトの名前を指定します"
+        },
+        "mtext/bold":{
+            "attribOption":["bold","normal"],
+            "description":"＜入力値＞bold｜normal\n太字にするかを指定します"
+        },
+        "mtext/edge":{
+            "attribOption":[],
+            "description":"＜入力値＞0xRRGGBB形式\n縁取りする文字色を指定します"
+        },
+        "mtext/shadow":{
+            "attribOption":[],
+            "description":"＜入力値＞0xRRGGBB形式\n影の色を指定します"
+        },
+        "mtext/fadeout":{
+            "attribOption":["true","false"],
+            "description":"＜入力値＞true｜false\nテキスト表示後にフェードアウトするかを指定します"
+        },
+        "mtext/time":{
+            "attribOption":[],
+            "description":"＜入力値＞数値(ミリ秒)\n処理にかける時間を指定します"
+        },
+        "mtext/wait":{
+            "attribOption":["true","false"],
+            "description":"＜入力値＞true｜false\n＜Default＞true\n処理の完了を待つかを指定します"
+        },
+        "mtext/in_effect":{
+            "attribOption":["fadeIn","fadeInDown","fadeInLeft","fadeInRight","fadeInUp","lightSpeedIn","rotateIn","rotateInDownLeft","rotateInDownRight","rotateInUpLeft","rotateInUpRight","zoomIn","zoomInDown","zoomInLeft","zoomInRight","zoomInUp","slideInDown","slideInLeft","slideInRight","slideInUp","bounceIn","bounceInDown","bounceInLeft","bounceInRight","bounceInUp","rollIn"],
+            "description":"＜入力値＞アニメーション名\n＜Default＞fadeIn\nテキストが表示される時のアニメーションを指定します"
+        },
+        "mtext/in_delay":{
+            "attribOption":[],
+            "description":"＜入力値＞数値(ミリ秒)\nテキストが表示されるまでの待ち時間を指定します"
+        },
+        "mtext/in_delay_scale":{
+            "attribOption":[],
+            "description":"＜入力値＞数値\n＜Default＞1.5\n１文字にかかるアニメーションの比率を指定します"
+        },
+        "mtext/in_sync":{
+            "attribOption":["true","false"],
+            "description":"＜入力値＞true｜false\n＜Default＞false\nすべてのテキストを同時にアニメーションするかを指定します"
+        },
+        "mtext/in_shuffle":{
+            "attribOption":["true","false"],
+            "description":"＜入力値＞true｜false\n＜Default＞false\nアニメーションのタイミングをランダムにするかを指定します"
+        },
+        "mtext/in_reverse":{
+            "attribOption":["true","false"],
+            "description":"＜入力値＞true｜false\n＜Default＞false\nテキストを後ろから表示するかを指定します"
+        },
+        "mtext/out_effect":{
+            "attribOption":["fadeIn","fadeInDown","fadeInLeft","fadeInRight","fadeInUp","lightSpeedIn","rotateIn","rotateInDownLeft","rotateInDownRight","rotateInUpLeft","rotateInUpRight","zoomIn","zoomInDown","zoomInLeft","zoomInRight","zoomInUp","slideInDown","slideInLeft","slideInRight","slideInUp","bounceIn","bounceInDown","bounceInLeft","bounceInRight","bounceInUp","rollIn"],
+            "description":"＜入力値＞アニメーション名\n＜Default＞fadeIn\nテキストが消える時のアニメーションを指定します"
+        },
+        "mtext/out_delay":{
+            "attribOption":[],
+            "description":"＜入力値＞数値(ミリ秒)\nテキストが消える時の速度を指定します"
+        },
+        "mtext/out_delay_scale":{
+            "attribOption":[],
+            "description":"＜入力値＞数値\n＜Default＞1.5\n１文字にかかるアニメーションの比率を指定します"
+        },
+        "mtext/out_sync":{
+            "attribOption":["true","false"],
+            "description":"＜入力値＞true｜false\n＜Default＞false\nすべてのテキストを同時にアニメーションするかを指定します"
+        },
+        "mtext/out_shuffle":{
+            "attribOption":["true","false"],
+            "description":"＜入力値＞true｜false\n＜Default＞false\nアニメーションのタイミングをランダムにするかを指定します"
+        },
+        "mtext/out_reverse":{
+            "attribOption":["true","false"],
+            "description":"＜入力値＞true｜false\n＜Default＞false\nテキストを後ろから表示するかを指定します"
         },
         "backlay/layer":{
             "attribOption":[],
